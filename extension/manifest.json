@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Roadmap Assistant Importer",
+  "version": "0.1.0",
+  "description": "Import an SJSU MyRoadmaps program (and its courses) into Academic Roadmap Assistant.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://catalog.sjsu.edu/*", "http://localhost:3000/*"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://catalog.sjsu.edu/preview_program.php*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": { "default_popup": "popup.html", "default_title": "Roadmap Assistant Importer" }
+}
